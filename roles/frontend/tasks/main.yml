@@ -8,6 +8,11 @@
     src: roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
 
+- name: Copy Nginx Config file
+  ansible.builtin.template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+
 - name: Clean Old App content
   ansible.builtin.file:
     path: /usr/share/nginx/html
@@ -24,10 +29,20 @@
     dest: /usr/share/nginx/html
     remote_src: yes
 
-- name: Start Nginx service
+- name: Start Nginx
   ansible.builtin.systemd:
-    name: nginx
     state: restarted
+    name: nginx
     enabled: true
+
+- name: Import Filebeat
+  ansible.builtin.import_role:
+    name: elk
+    tasks_from: filebeat
+
+- name: Import Prometheus
+  ansible.builtin.import_role:
+    name: prometheus
+    tasks_from: node_exporter
 
 
