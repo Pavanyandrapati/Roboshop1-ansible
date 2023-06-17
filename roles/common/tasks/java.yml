@@ -1,6 +1,6 @@
-- name: Install Maven
-  ansible.builtin.yum:
-    name: maven
+#- name: Install Maven
+#  ansible.builtin.yum:
+#    name: maven
 
 - name: Install java
   ansible.builtin.yum:
