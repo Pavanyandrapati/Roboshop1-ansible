@@ -1,8 +1,9 @@
+## This step is no more needed, as CI pipeline is taking care
 #- name: Install Maven
 #  ansible.builtin.yum:
 #    name: maven
 
-- name: Install java
+- name: Install Java
   ansible.builtin.yum:
     name: java-17-openjdk
 
@@ -10,6 +11,7 @@
   ansible.builtin.import_tasks:
     file: app_prereq.yml
 
+## This step is no more needed, as CI pipeline is taking care
 #- name: Download Maven Dependencies
 #  ansible.builtin.shell: mvn clean package ; mv target/{{component}}-1.0.jar {{component}}.jar
 #  args:

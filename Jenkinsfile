@@ -9,13 +9,13 @@ pipeline {
   parameters {
     choice(name: 'env', choices: ['dev', 'prod'], description: 'Pick environment')
     string(name: 'component', defaultValue: '', description: 'component name')
+
   }
 
   stages {
-
     stage('Ansible') {
-      steps {
-        sh 'ansible-playbook -i ${component}-${env}.pavan345.online, roboshop.yml -e ansible_user=centos -e ansible_password=DevOps321 -e env=${env} -e role_name=${component}'
+      steps
+        sh 'ansible-playbook -i /tmp/inv roboshop.yml -e ansible_user=centos -e ansible_password=DevOps321 -e env=${env} -e role_name=${component}'
       }
     }
 
@@ -28,3 +28,4 @@ pipeline {
   }
 
 }
+
