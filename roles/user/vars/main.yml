@@ -1,4 +1,4 @@
 component: user
 schema_setup: mongo
-app_version: 1.0.2
+app_version: 1.0.0
 
